@@ -1,14 +1,27 @@
 package com.stackroute.MovieApp.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
-@Entity
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//import lombok.AllArgsConstructor;
+//import lombok.Builder;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//@Data
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Entity
+@Document
 public class Movie {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private int movieId;
 	private String title;
 	private String year;
@@ -19,8 +32,9 @@ public class Movie {
 		
 	}
 	
-	public Movie(String title, String year, String type, String poster) {
+	public Movie(int movieId,String title, String year, String type, String poster) {
 		super();
+		this.movieId = movieId;
 		this.title = title;
 		this.year = year;
 		this.type = type;
